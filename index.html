@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>سورنا بگ | تولیدی کیف و کوله‌پشتی</title>
-<meta name="description" content="سورنا بگ، تولیدی کیف و کوله‌پشتی چرمی دست‌دوز. تولید عمده و سفارشی.">
+<meta name="description" content="سورنا بگ، تولیدی کیف و کوله‌پشتی با دوخت مقاوم. تولید عمده و سفارشی.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>:root{--navy:#0D1528;--gold:#C6A15B;--bg:#fff;--card:#F3F4F6;--text:#20242C;--mute:#737B89;--line:#E5E7EB;--glass:rgba(255,255,255,.75);--shadow:0 20px 50px -20px rgba(13,21,40,.25)}
@@ -94,6 +94,31 @@ footer{padding:30px 0;text-align:center;color:var(--mute);font-size:13px;border-
 .rv{opacity:0;transform:translateY(30px);transition:.8s}.rv.on{opacity:1;transform:none}
 .fab{position:fixed;bottom:18px;left:18px;z-index:60;width:54px;height:54px;border-radius:50%;background:var(--gold);color:#0D1528;font-size:23px;display:grid;place-items:center;box-shadow:0 10px 30px -5px var(--gold)}
 
+.mesh{background:radial-gradient(60% 50% at 15% 0%,color-mix(in srgb,var(--gold) 14%,transparent),transparent),radial-gradient(50% 40% at 90% 100%,color-mix(in srgb,var(--gold) 10%,transparent),transparent)}
+.eyebrow::before,.eyebrow::after{content:'';display:inline-block;width:28px;height:1px;background:var(--gold);vertical-align:middle;margin:0 10px}
+.marq{overflow:hidden;background:var(--navy);border-block:1px solid var(--gold);padding:16px 0;direction:ltr}
+.marq .mt{display:flex;gap:46px;width:max-content;animation:mq 40s linear infinite;color:#e9d6a6;font-weight:700;font-size:17px;white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:36px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:34px 16px;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:4px;transition:.4s;position:relative;overflow:hidden}
+.tile span{font-size:44px;transition:.4s}.tile b{font-size:18px}.tile small{color:var(--mute)}
+.tile::after{content:'';position:absolute;inset:auto 0 0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:.4s}
+.tile:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:var(--shadow)}.tile:hover span{transform:scale(1.2) rotate(-6deg)}.tile:hover::after{transform:scaleX(1)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:40px;counter-reset:s}
+.step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:34px 24px 26px;transition:.4s}
+.step:hover{border-color:var(--gold);transform:translateY(-6px)}
+.step i{position:absolute;top:-22px;right:24px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f3dca0);color:#0D1528;font-style:normal;font-weight:900;font-size:20px;display:grid;place-items:center;box-shadow:0 10px 25px -8px var(--gold)}
+.step h3{margin:6px 0;font-size:19px}.step p{color:var(--mute);font-size:14.5px}
+.ctas{padding:40px 0}
+.cta{border-radius:34px;padding:60px 26px;text-align:center;color:#fff;background:radial-gradient(70% 120% at 50% 0%,rgba(217,182,111,.28),transparent),linear-gradient(135deg,#0D1528,#16244a);border:1px solid rgba(217,182,111,.5);box-shadow:var(--shadow)}
+.cta h2{font-size:clamp(24px,4vw,38px);font-weight:900;color:#f0d79a}.cta p{max-width:620px;margin:10px auto 0;color:#d6dbe6}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:18px;margin-top:12px;overflow:hidden;transition:.3s}.qa[open]{border-color:var(--gold)}
+.qa summary{cursor:pointer;padding:18px 22px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.qa summary::after{content:'+';color:var(--gold);font-size:24px;line-height:1}.qa[open] summary::after{content:'−'}
+.qa p{padding:0 22px 20px;color:var(--mute)}
+footer a{margin:0 6px}footer a:hover{color:var(--gold)}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.12),transparent 60%);transform:translateX(120%);transition:.8s;z-index:1;pointer-events:none}.card:hover::before{transform:translateX(-120%)}
+
 body{padding-bottom:60px}.top{position:sticky;top:0;z-index:30;background:var(--glass);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:10px;height:64px}.top h1{font-size:18px;margin-left:auto}
 .tabs{display:flex;gap:8px;margin:22px 0;flex-wrap:wrap}.tabs button{padding:10px 20px;border-radius:999px;background:var(--card);color:var(--text);border:1px solid var(--line);font-weight:700}.tabs button.on{background:var(--gold);color:#0D1528;border-color:var(--gold)}
@@ -117,7 +142,7 @@ textarea{min-height:110px;resize:vertical}
 <div id="site">
 <header><div class="wrap">
   <a href="#top" class="brand"><img data-logo alt=""><span id="brand" class="gold">سورنا بگ</span></a>
-  <nav><a href="#products">محصولات</a><a href="#about">درباره ما</a><a href="#contact">تماس</a></nav>
+  <nav><a href="#products">محصولات</a><a href="#process">تولید</a><a href="#about">درباره ما</a><a href="#faq">سوالات</a><a href="#contact">تماس</a></nav>
   <button class="icon-btn theme-btn" aria-label="تم"></button>
   <a class="btn btn-gold" id="topcall" href="#contact" style="padding:9px 20px">تماس</a>
 </div></header>
@@ -133,7 +158,14 @@ textarea{min-height:110px;resize:vertical}
   </div>
 </div>
 
-<section id="products"><div class="wrap">
+<div class="marq"><div class="mt" id="mq"></div></div>
+
+<section id="cats"><div class="wrap">
+  <div class="rv" style="text-align:center"><div class="eyebrow">CATEGORIES</div><h2 class="title">دسته‌بندی <span class="gold">محصولات</span></h2></div>
+  <div class="tiles" id="tiles"></div>
+</div></section>
+
+<section id="products" class="mesh"><div class="wrap">
   <div class="head rv">
     <div><div class="eyebrow">COLLECTION</div><h2 class="title">محصولات <span class="gold">سورنا</span></h2></div>
     <div class="tools"><input id="q" placeholder="جستجو نام یا کد..."><select id="cat"><option value="">همه دسته‌ها</option></select></div>
@@ -141,9 +173,24 @@ textarea{min-height:110px;resize:vertical}
   <div class="grid" id="grid"></div>
 </div></section>
 
+<section id="process"><div class="wrap">
+  <div class="rv" style="text-align:center"><div class="eyebrow">HOW WE MAKE</div><h2 class="title">از طرح تا <span class="gold">محصول نهایی</span></h2></div>
+  <div class="steps" id="pt"></div>
+</div></section>
+
 <section class="about" id="about"><div class="wrap two">
   <div class="rv"><div class="eyebrow">ABOUT US</div><h2 class="title gold" id="at"></h2><p id="ax"></p></div>
   <div class="feat rv" id="feat"></div>
+</div></section>
+
+<section class="ctas"><div class="wrap"><div class="cta rv">
+  <h2 id="ctat"></h2><p id="ctax"></p>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px"><a class="btn btn-gold" id="ctac">📞 تماس همین الان</a><a class="btn btn-line" id="ctaw" target="_blank" rel="noopener" style="color:#fff;border-color:rgba(255,255,255,.4)">واتساپ</a></div>
+</div></div></section>
+
+<section id="faq"><div class="wrap" style="max-width:820px">
+  <div class="rv" style="text-align:center"><div class="eyebrow">FAQ</div><h2 class="title">سوالات <span class="gold">متداول</span></h2></div>
+  <div id="faqs" class="rv"></div>
 </div></section>
 
 <section id="contact"><div class="wrap">
@@ -156,7 +203,9 @@ textarea{min-height:110px;resize:vertical}
   </div>
 </div></section>
 
-<footer>© <span id="yr"></span> <span id="fb"></span> — تمامی حقوق محفوظ است</footer>
+<footer><div class="wrap"><div class="brand" style="justify-content:center;margin-bottom:10px"><img data-logo alt=""><span class="gold" id="fb"></span></div>
+<div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:10px"><a href="#products">محصولات</a><a href="#process">تولید</a><a href="#about">درباره ما</a><a href="#faq">سوالات</a><a href="#contact">تماس</a></div>
+© <span id="yr"></span> — تمامی حقوق محفوظ است</div></footer>
 <a class="fab" id="fab" aria-label="تماس">📞</a>
 
 <div class="ov" id="pov"><div class="modal" id="pm"></div></div>
@@ -209,12 +258,18 @@ const finalPrice = p => Math.round(p.price * (100 - (p.discount || 0)) / 100);
 const DEFAULTS = {
   brand: 'سورنا بگ',
   tagline: 'تولیدی کیف سورنا',
-  hero_title: 'هنرِ چرم، در دستان شما',
-  hero_sub: 'کیف و کوله‌پشتی دست‌دوز با چرم مرغوب',
-  hero_caps: 'انتخاب چرم اعلا\nبرش و طراحی دقیق\nدوخت دست‌ساز\nکیفیتی که سال‌ها می‌ماند',
+  hero_title: 'کیف و کوله‌ای که همراه همه‌ی روزهای توست',
+  hero_sub: 'طراحی مدرن، دوخت مقاوم، قیمت مستقیم از تولیدی',
+  hero_caps: 'طراحی مدرن و کاربردی\nبرش و دوخت دقیق\nیراق و زیپ باکیفیت\nتولید عمده و سفارشی',
+  marquee: 'کیف دستی\nکوله‌پشتی\nکیف دوشی\nکیف لپ‌تاپ\nکیف مدارس\nتولید عمده\nسفارش با لوگوی شما',
+  cats: 'کیف دستی\nکوله‌پشتی\nکیف دوشی\nکیف لپ‌تاپ',
   about_title: 'درباره سورنا بگ',
-  about_text: 'سورنا بگ یک تولیدی تخصصی کیف، کوله‌پشتی و اکسسوری چرمی است. از انتخاب چرم و پارچه تا برش، دوخت و کنترل کیفیت، همه مراحل در کارگاه خودمان و زیر نظر استادکاران باتجربه انجام می‌شود.\n\nما به جزئیات اعتقاد داریم: دوخت‌های محکم، زیپ و یراق باکیفیت و طراحی‌ای که هم شیک است و هم برای استفاده روزمره راحت. تولید عمده و سفارشی (با لوگو و رنگ دلخواه شما) هم انجام می‌دهیم.',
-  features: 'چرم و مواد درجه‌یک\nتولید عمده و سفارشی\nدوخت دست‌ساز و مقاوم\nتحویل سریع به سراسر کشور',
+  about_text: 'سورنا بگ یک تولیدی تخصصی کیف و کوله‌پشتی است. از طراحی الگو و انتخاب پارچه و مواد اولیه تا برش، دوخت و کنترل کیفیت، همه مراحل در کارگاه خودمان و توسط نیروهای باتجربه انجام می‌شود.\n\nما به جزئیات اعتقاد داریم: دوخت‌های محکم، زیپ و یراق باکیفیت و طراحی‌ای که هم زیباست و هم برای استفاده روزمره راحت. چون مستقیم از تولیدی خرید می‌کنید، قیمت‌ها منصفانه است. تولید عمده و سفارشی (با لوگو و رنگ دلخواه شما) هم انجام می‌دهیم.',
+  features: 'مواد اولیه باکیفیت\nتولید عمده و سفارشی\nدوخت مقاوم و دقیق\nارسال به سراسر کشور',
+  process: 'طراحی|الگو و مدل را با توجه به نیاز بازار و سلیقه مشتری طراحی می‌کنیم.\nانتخاب مواد|پارچه، آستر، زیپ و یراق را از بهترین تامین‌کننده‌ها انتخاب می‌کنیم.\nبرش و دوخت|استادکاران ما هر کیف را با دقت برش می‌زنند و می‌دوزند.\nکنترل کیفیت و ارسال|تک‌تک محصولات بازبینی و بسته‌بندی و ارسال می‌شود.',
+  cta_title: 'تولید عمده یا سفارش با لوگوی خودتان؟',
+  cta_text: 'برای مدرسه، شرکت، فروشگاه یا هدیه‌ی سازمانی، کیف و کوله را با رنگ و برند خودتان سفارش بدهید. همین الان تماس بگیرید.',
+  faq: 'آیا امکان خرید عمده وجود دارد؟|بله، برای خرید عمده با شماره‌های تماس هماهنگ کنید تا بهترین قیمت را دریافت کنید.\nآیا می‌توانم کیف را با لوگوی خودم سفارش بدهم؟|بله، سفارش با لوگو، رنگ و مدل دلخواه شما انجام می‌شود.\nچطور محصول را بخرم؟|روی دکمه‌ی خرید در صفحه‌ی محصول بزنید و با شماره‌ها تماس بگیرید. فقط کد محصول را اعلام کنید.\nارسال به شهرستان دارید؟|بله، به سراسر کشور ارسال می‌کنیم.',
   phones: '09123675474\n09379337237\n09353971228',
   address: 'برای مسیریابی روی نقشه بزنید',
   map_lat: '35.72000153555729',
@@ -253,7 +308,7 @@ initTheme();
 let S = DEFAULTS, P = [];
 const ph = () => `<svg viewBox="0 0 100 100" style="width:100%;height:100%"><rect width="100" height="100" fill="none"/><path d="M30 42h40l5 40H25z M38 42c0-20 24-20 24 0" fill="none" stroke="#C6A15B" stroke-width="3"/></svg>`;
 const SAMPLE = [
- {id:1,code:'SB-101',name:'کیف دستی چرم کلاسیک',category:'کیف دستی',price:2850000,discount:15,colors:'مشکی، قهوه‌ای، عسلی',images:[],description:'چرم طبیعی درجه یک\nآستر مخمل و زیپ YKK\nابعاد ۳۰×۲۲×۱۱'},
+ {id:1,code:'SB-101',name:'کیف دستی کلاسیک',category:'کیف دستی',price:2850000,discount:15,colors:'مشکی، قهوه‌ای، عسلی',images:[],description:'پارچه و آستر باکیفیت\nزیپ و یراق مقاوم\nابعاد ۳۰×۲۲×۱۱'},
  {id:2,code:'SB-205',name:'کوله‌پشتی لپ‌تاپ',category:'کوله‌پشتی',price:1950000,discount:0,colors:'سرمه‌ای، مشکی',images:[],description:'ضدآب با جای لپ‌تاپ ۱۵ اینچ'},
  {id:3,code:'SB-310',name:'کیف دوشی مردانه',category:'کیف دوشی',price:1450000,discount:10,colors:'قهوه‌ای، مشکی',images:[],description:'سبک و مقاوم، مناسب استفاده روزانه'}
 ];
@@ -327,10 +382,14 @@ $('#q').oninput=render; $('#cat').onchange=render;
   $('#brand').textContent=S.brand; $('#fb').textContent=S.brand; $('#yr').textContent=new Date().toLocaleDateString('fa-IR',{year:'numeric'});
   $('#ht').textContent=S.hero_title; $('#hs').textContent=S.hero_sub; setCaps(lines(S.hero_caps));
   $('#at').textContent=S.about_title; $('#ax').textContent=S.about_text;
+  const mq=lines(S.marquee); $('#mq').innerHTML=[...mq,...mq,...mq,...mq].map(x=>`<span>✦ ${esc(x)}</span>`).join('');
+  $('#pt').innerHTML=lines(S.process).map((l,i)=>{const [t,d]=l.split('|');return `<div class="step rv"><i>${fa(i+1)}</i><h3>${esc(t)}</h3><p>${esc(d||'')}</p></div>`}).join('');
+  $('#faqs').innerHTML=lines(S.faq).map(l=>{const [q,a]=l.split('|');return `<details class="qa"><summary>${esc(q)}</summary><p>${esc(a||'')}</p></details>`}).join('');
+  $('#ctat').textContent=S.cta_title; $('#ctax').textContent=S.cta_text;
   $('#feat').innerHTML=lines(S.features).map(f=>`<div>${esc(f)}</div>`).join('');
   const ps=lines(S.phones);
   $('#phones').innerHTML=ps.map(n=>`<a class="ph-link" href="tel:${esc(n)}"><span>${esc(n)}</span><span>📞</span></a>`).join('');
-  if(ps[0]){$('#topcall').href='tel:'+ps[0];$('#fab').href='tel:'+ps[0];} else $('#fab').style.display='none';
+  if(ps[0]){$('#topcall').href='tel:'+ps[0];$('#fab').href='tel:'+ps[0];$('#ctac').href='tel:'+ps[0];$('#ctaw').href='https://wa.me/'+waNum(ps[0]);} else $('#fab').style.display='none';
   $('#addr').textContent=S.address;
   const la=S.map_lat, lo=S.map_lng;
   $('#map').src=`https://maps.google.com/maps?q=${la},${lo}&z=16&output=embed`;
@@ -338,6 +397,9 @@ $('#q').oninput=render; $('#cat').onchange=render;
   if(sb){ try{ const {data}=await sb.from('products').select('*').eq('active',true).order('sort').order('created_at',{ascending:false}); P=data||[]; }catch(e){P=[]} } else P=SAMPLE;
   const cats=[...new Set(P.map(p=>p.category).filter(Boolean))];
   $('#cat').innerHTML='<option value="">همه دسته‌ها</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');
+  const names=cats.length?cats:lines(S.cats), ic=['👜','🎒','💼','🧳','👝','🛍️'];
+  $('#tiles').innerHTML=names.map((c,i)=>`<button class="tile rv" data-c="${esc(c)}"><span>${ic[i%6]}</span><b>${esc(c)}</b><small>${fa(P.filter(p=>p.category===c).length)} مدل</small></button>`).join('');
+  $$('.tile').forEach(t=>t.onclick=()=>{$('#cat').value=t.dataset.c;render();$('#products').scrollIntoView({behavior:'smooth'})});
   render();
   const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('on')),{threshold:.12});
   $$('.rv:not(.on)').forEach(el=>io.observe(el));
@@ -351,7 +413,7 @@ const toast=m=>{const t=$('#toast');t.textContent=m;t.style.display='block';setT
 let P=[],S={};
 if(!sb){ $('#login').innerHTML='<p>ابتدا فایل config.js را با اطلاعات Supabase پر کن.</p>'; }
 const SF=[['brand','نام برند','i'],['tagline','شعار','i'],['hero_title','تیتر اصلی (بعد از لوگو)','i'],['hero_sub','زیرتیتر','i'],['hero_caps','متن‌های حین اسکرول (هر خط یک متن)','t'],
-['about_title','عنوان درباره ما','i'],['about_text','متن درباره ما','t'],['features','ویژگی‌ها (هر خط یکی)','t'],['phones','شماره تلفن‌ها (هر خط یکی)','t'],['address','آدرس','i'],
+['marquee','نوار متحرک زیر ویدیو (هر خط یک کلمه)','t'],['cats','دسته‌بندی‌های پیش‌فرض (هر خط یکی)','t'],['process','مراحل تولید (هر خط: عنوان|توضیح)','t'],['cta_title','تیتر بنر سفارش عمده','i'],['cta_text','متن بنر سفارش عمده','t'],['faq','سوالات متداول (هر خط: سوال|جواب)','t'],['about_title','عنوان درباره ما','i'],['about_text','متن درباره ما','t'],['features','ویژگی‌ها (هر خط یکی)','t'],['phones','شماره تلفن‌ها (هر خط یکی)','t'],['address','آدرس','i'],
 ['map_lat','عرض جغرافیایی نقشه','i'],['map_lng','طول جغرافیایی نقشه','i'],['accent_light','رنگ طلایی حالت روز','c'],['accent_dark','رنگ طلایی حالت شب','c']];
 async function session(){ const {data}=await sb.auth.getSession(); const on=!!data.session; $('#login').style.display=on?'none':'block'; $('#app').style.display=on?'block':'none'; if(on) init(); }
 $('#lg').onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$('#em').value,password:$('#pw').value}); if(error)$('#le').textContent='ایمیل یا رمز اشتباه است'; else session();};
