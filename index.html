@@ -163,6 +163,30 @@ section{padding:120px 0}
 ::selection{background:var(--gold);color:#0D1528}
 ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:8px}::-webkit-scrollbar-track{background:var(--bg)}
 
+/* ===== v4 ===== */
+html{scroll-padding-top:70px}
+.theme-btn{color:var(--gold);display:grid;place-items:center;transition:.5s;background:var(--card)}
+.theme-btn:hover{transform:rotate(30deg);border-color:var(--gold);box-shadow:0 0 20px -4px var(--gold)}
+.theme-btn svg{transition:.4s}
+.burger{display:none;color:var(--gold);place-items:center}
+.mm{position:fixed;inset:0;z-index:90;background:rgba(5,8,15,.97);backdrop-filter:blur(20px);display:none;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.mm.on{display:flex;animation:f .3s}
+.mm>a:not(.btn){font-size:28px;font-weight:800;padding:8px 24px;color:var(--text);transition:.3s}.mm>a:not(.btn):hover{color:var(--gold);letter-spacing:2px}
+.mm{color:#fff}.mm>a:not(.btn){color:#f3f4f6}
+.mmp{display:flex;flex-direction:column;gap:10px;margin-top:26px;width:min(80%,320px)}
+.tile span{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);background:radial-gradient(circle,color-mix(in srgb,var(--gold) 14%,transparent),transparent 70%);color:var(--gold);margin-bottom:8px;font-size:0}
+.tile span svg{width:50px;height:50px;filter:drop-shadow(0 0 8px color-mix(in srgb,var(--gold) 50%,transparent))}
+.credit{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}.credit a{color:var(--gold);font-weight:700}
+@media(max-width:760px){
+ .burger{display:grid}
+ .tiles{grid-template-columns:1fr 1fr;gap:12px}.tile{padding:24px 8px}.tile span{width:74px;height:74px}.tile span svg{width:38px;height:38px}.tile b{font-size:16px}
+ .tile:last-child:nth-child(odd){grid-column:1/-1}
+ .tools,.tools input,.tools select{width:100%}.tools{display:grid;grid-template-columns:1fr 1fr}.tools input{grid-column:1/-1}
+ section{padding:80px 0}
+ .grid{grid-template-columns:1fr 1fr;gap:12px}.card .b{padding:12px 12px 16px}.card h3{font-size:15px}.price b{font-size:15px}
+ header .wrap .btn-gold{padding:8px 16px!important}
+}
+
 body{padding-bottom:60px}.top{position:sticky;top:0;z-index:30;background:var(--glass);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:10px;height:64px}.top h1{font-size:18px;margin-left:auto}
 .tabs{display:flex;gap:8px;margin:22px 0;flex-wrap:wrap}.tabs button{padding:10px 20px;border-radius:999px;background:var(--card);color:var(--text);border:1px solid var(--line);font-weight:700}.tabs button.on{background:var(--gold);color:#0D1528;border-color:var(--gold)}
@@ -184,12 +208,14 @@ textarea{min-height:110px;resize:vertical}
 </head>
 <body>
 <div id="site">
+<div class="mm" id="mm"><button class="icon-btn" id="mmx" aria-label="بستن" style="position:absolute;top:18px;left:18px">✕</button><a href="#products">محصولات</a><a href="#process">مراحل تولید</a><a href="#about">درباره ما</a><a href="#faq">سوالات متداول</a><a href="#contact">تماس و آدرس</a><div class="mmp" id="mmp"></div></div>
 <div class="pre" id="pre"><div class="ring"><img data-logo alt=""></div></div><div class="glow" id="glow"></div><div class="sp" id="sp"></div>
 <header><div class="wrap">
   <a href="#top" class="brand"><img data-logo alt=""><span id="brand" class="gold">سورنا بگ</span></a>
   <nav><a href="#products">محصولات</a><a href="#process">تولید</a><a href="#about">درباره ما</a><a href="#faq">سوالات</a><a href="#contact">تماس</a></nav>
   <button class="icon-btn theme-btn" aria-label="تم"></button>
   <a class="btn btn-gold" id="topcall" href="#contact" style="padding:9px 20px">تماس</a>
+  <button class="icon-btn burger" id="bg" aria-label="منو"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
 </div></header>
 
 <div class="hero" id="top">
@@ -214,7 +240,7 @@ textarea{min-height:110px;resize:vertical}
 <section id="products" class="mesh"><div class="wrap">
   <div class="head rv">
     <div><div class="eyebrow">COLLECTION</div><h2 class="title">محصولات <span class="gold">سورنا</span></h2></div>
-    <div class="tools"><input id="q" placeholder="جستجو نام یا کد..."><select id="cat"><option value="">همه دسته‌ها</option></select></div>
+    <div class="tools"><input id="q" placeholder="جستجو نام یا کد..."><select id="cat"><option value="">همه دسته‌ها</option></select><select id="so"><option value="">جدیدترین</option><option value="lo">ارزان‌ترین</option><option value="hi">گران‌ترین</option><option value="dc">بیشترین تخفیف</option></select></div>
   </div>
   <div class="grid" id="grid"></div>
 </div></section>
@@ -253,7 +279,8 @@ textarea{min-height:110px;resize:vertical}
 
 <footer><div class="wrap"><div class="brand" style="justify-content:center;margin-bottom:10px"><img data-logo alt=""><span class="gold" id="fb"></span></div>
 <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:10px"><a href="#products">محصولات</a><a href="#process">تولید</a><a href="#about">درباره ما</a><a href="#faq">سوالات</a><a href="#contact">تماس</a></div>
-© <span id="yr"></span> — تمامی حقوق محفوظ است</div></footer>
+© <span id="yr"></span> — تمامی حقوق محفوظ است
+<div class="credit">طراحی و ساخت توسط <a id="cr" target="_blank" rel="noopener"></a></div></div></footer>
 <a class="fab" id="fab" aria-label="تماس">📞</a>
 
 <div class="ov" id="pov"><div class="modal" id="pm"></div></div>
@@ -322,6 +349,8 @@ const DEFAULTS = {
   address: 'برای مسیریابی روی نقشه بزنید',
   map_lat: '35.72000153555729',
   map_lng: '50.81608191519174',
+  credit_name: 'امیرحسین سرافراز',
+  credit_url: 'https://amirhooseinsarafraz.ir',
   accent_light: '#C6A15B',
   accent_dark: '#D9B66F'
 };
@@ -335,8 +364,9 @@ function applyAccent(s) {
   st.textContent = `:root{--gold:${s.accent_light}}[data-theme=dark]{--gold:${s.accent_dark}}`;
   document.head.appendChild(st);
 }
+const SUN='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>', MOON='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>';
 function initTheme() {
-  const set = t => { document.documentElement.dataset.theme = t; localStorage.setItem('theme', t); $$('.theme-btn').forEach(b => b.textContent = t === 'dark' ? '☀️' : '🌙'); };
+  const set = t => { document.documentElement.dataset.theme = t; localStorage.setItem('theme', t); $$('.theme-btn').forEach(b => b.innerHTML = t === 'dark' ? SUN : MOON); };
   set(localStorage.getItem('theme') || 'dark');
   $$('.theme-btn').forEach(b => b.onclick = () => set(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
 }
@@ -348,7 +378,7 @@ document.querySelectorAll('[data-logo]').forEach(i=>i.src=LOGO);
 {const l=document.createElement('link');l.rel='icon';l.href=LOGO;document.head.appendChild(l);}
 const ADMIN=location.hash==='#admin';
 if(ADMIN){document.getElementById('site').style.display='none';document.getElementById('adm').style.display='block';document.title='پنل مدیریت';}
-addEventListener('hashchange',()=>location.reload());
+addEventListener('hashchange',()=>{if(ADMIN||location.hash==='#admin')location.reload()});
 initTheme();
 </script>
 <script>
@@ -388,6 +418,7 @@ const imgs = p => (p.images && p.images.length) ? p.images : [];
 function render(){
   const q=$('#q').value.trim().toLowerCase(), c=$('#cat').value;
   const list=P.filter(p=>(!c||p.category===c)&&(!q||(p.name+p.code).toLowerCase().includes(q)));
+  const so=$('#so').value; if(so==='lo')list.sort((a,b)=>finalPrice(a)-finalPrice(b)); else if(so==='hi')list.sort((a,b)=>finalPrice(b)-finalPrice(a)); else if(so==='dc')list.sort((a,b)=>(b.discount||0)-(a.discount||0));
   $('#grid').innerHTML = list.length ? list.map(p=>`<div class="card rv on" data-id="${esc(p.id)}">
     ${p.discount>0?`<div class="badge">${fa(p.discount)}٪ تخفیف</div>`:''}
     <div class="im">${imgs(p)[0]?`<img loading="lazy" src="${esc(imgs(p)[0])}" alt="${esc(p.name)}">`:ph()}${imgs(p)[1]?`<img class="i2" loading="lazy" src="${esc(imgs(p)[1])}" alt="">`:''}<span class="vw">مشاهده محصول ←</span></div>
@@ -405,13 +436,17 @@ function openP(id){
   <div class="price"><b>${fa(finalPrice(p))} تومان</b>${p.discount>0?`<s>${fa(p.price)}</s><span class="badge" style="position:static">${fa(p.discount)}٪</span>`:''}</div>
   ${p.colors?`<div style="margin-top:14px;font-weight:700">رنگ‌بندی:</div><div class="chips">${p.colors.split(/[،,\n]/).map(c=>c.trim()).filter(Boolean).map(c=>`<span>${esc(c)}</span>`).join('')}</div>`:''}
   <div style="font-weight:700;margin-top:8px">توضیحات:</div><div class="desc">${esc(p.description||'—')}</div>
-  <div class="acts"><button class="btn btn-gold" id="buy">🛒 خرید / ثبت سفارش</button><button class="btn btn-line" id="ask">❓ سوال درباره این کد</button></div></div>`;
+  <div class="acts"><button class="btn btn-gold" id="buy">🛒 خرید / ثبت سفارش</button><button class="btn btn-line" id="ask">❓ سوال درباره این کد</button><button class="btn btn-line" id="shr" style="flex:none;min-width:0">🔗</button></div></div>`;
   $('#pov').classList.add('on'); document.body.style.overflow='hidden';
   $('#px').onclick=closeP;
-  $$('.thumbs img').forEach(t=>t.onclick=()=>{$('#mi').src=t.dataset.s;$$('.thumbs img').forEach(x=>x.classList.remove('on'));t.classList.add('on');});
+  let ix=0; const setI=i=>{ix=(i+im.length)%im.length;$('#mi').src=im[ix];$$('.thumbs img').forEach((x,j)=>x.classList.toggle('on',j===ix))};
+  $$('.thumbs img').forEach((t,j)=>t.onclick=()=>setI(j));
+  if(im.length>1){let sx=0;const mn=$('.gal .main');mn.ontouchstart=e=>sx=e.touches[0].clientX;mn.ontouchend=e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40)setI(ix+(d<0?1:-1))};}
+  history.replaceState(null,'','#p='+encodeURIComponent(p.code));
+  $('#shr').onclick=async()=>{const u=location.href;try{if(navigator.share){await navigator.share({title:p.name,url:u});}else{await navigator.clipboard.writeText(u);$('#shr').textContent='✓';}}catch(e){}};
   $('#buy').onclick=()=>contact(p,'buy'); $('#ask').onclick=()=>contact(p,'ask');
 }
-const closeP=()=>{$('#pov').classList.remove('on');document.body.style.overflow='';};
+const closeP=()=>{$('#pov').classList.remove('on');document.body.style.overflow='';if(location.hash.startsWith('#p='))history.replaceState(null,'',location.pathname+location.search);};
 function contact(p,mode){
   const m = mode==='buy' ? `سلام، می‌خواهم محصول «${p.name}» با کد ${p.code} را سفارش بدهم.` : `سلام، درباره محصول «${p.name}» با کد ${p.code} سوال دارم.`;
   const ps=lines(S.phones);
@@ -422,8 +457,9 @@ function contact(p,mode){
   $('#cov').classList.add('on'); $('#cx').onclick=()=>$('#cov').classList.remove('on');
 }
 $('#pov').onclick=e=>{if(e.target.id==='pov')closeP()}; $('#cov').onclick=e=>{if(e.target.id==='cov')e.target.classList.remove('on')};
+$('#bg').onclick=()=>$('#mm').classList.add('on'); $('#mm').onclick=e=>{if(e.target.id==='mm'||e.target.closest('a')||e.target.id==='mmx')$('#mm').classList.remove('on')};
 addEventListener('keydown',e=>{if(e.key==='Escape'){closeP();$('#cov').classList.remove('on')}});
-$('#q').oninput=render; $('#cat').onchange=render;
+$('#q').oninput=render; $('#cat').onchange=render; $('#so').onchange=render;
 /* ---------- init ---------- */
 (async()=>{
   S=await loadSettings(); applyAccent(S);
@@ -438,17 +474,19 @@ $('#q').oninput=render; $('#cat').onchange=render;
   const ps=lines(S.phones);
   $('#phones').innerHTML=ps.map(n=>`<a class="ph-link" href="tel:${esc(n)}"><span>${esc(n)}</span><span>📞</span></a>`).join('');
   if(ps[0]){$('#topcall').href='tel:'+ps[0];$('#fab').href='tel:'+ps[0];$('#ctac').href='tel:'+ps[0];$('#ctaw').href='https://wa.me/'+waNum(ps[0]);} else $('#fab').style.display='none';
-  $('#addr').textContent=S.address;
+  $('#addr').textContent=S.address; $('#cr').textContent=S.credit_name; $('#cr').href=S.credit_url;
+  $('#mmp').innerHTML=ps.map(n=>`<a href="tel:${esc(n)}" class="btn btn-gold" style="direction:ltr">📞 ${esc(n)}</a>`).join('');
   const la=S.map_lat, lo=S.map_lng;
   $('#map').src=`https://maps.google.com/maps?q=${la},${lo}&z=16&output=embed`;
   $('#gmap').href=`https://www.google.com/maps?q=${la},${lo}`; $('#amap').href=`https://maps.apple.com/maps?ll=${la},${lo}&q=${la},${lo}&t=m`;
   if(sb){ try{ const {data}=await sb.from('products').select('*').eq('active',true).order('sort').order('created_at',{ascending:false}); P=data||[]; }catch(e){P=[]} } else P=SAMPLE;
   const cats=[...new Set(P.map(p=>p.category).filter(Boolean))];
   $('#cat').innerHTML='<option value="">همه دسته‌ها</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');
-  const names=cats.length?cats:lines(S.cats), ic=['👜','🎒','💼','🧳','👝','🛍️'];
-  $('#tiles').innerHTML=names.map((c,i)=>`<button class="tile rv" data-c="${esc(c)}"><span>${ic[i%6]}</span><b>${esc(c)}</b><small>${fa(P.filter(p=>p.category===c).length)} مدل</small></button>`).join('');
+  const names=cats.length?cats:lines(S.cats), IC=["<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 20h30l3 22H6z\"/><path d=\"M17 20v-4a7 7 0 0 1 14 0v4\"/><path d=\"M20 28h8\"/></svg>", "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"14\" width=\"28\" height=\"30\" rx=\"9\"/><path d=\"M20 14v-3a4 4 0 0 1 8 0v3\"/><rect x=\"16\" y=\"28\" width=\"16\" height=\"10\" rx=\"3\"/><path d=\"M16 22h16\"/></svg>", "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8 20h32v22a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2z\"/><path d=\"M8 20l8-6h16l8 6\"/><path d=\"M20 28h8\"/><path d=\"M14 14c-4-8 4-10 10-10s14 2 10 10\"/></svg>", "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"16\" width=\"36\" height=\"26\" rx=\"4\"/><path d=\"M18 16v-4a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4\"/><path d=\"M6 28h36\"/><rect x=\"21\" y=\"25\" width=\"6\" height=\"6\" rx=\"1.5\"/></svg>", "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8 18h32v20a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4z\"/><path d=\"M8 18c0-4 4-6 8-6h16c4 0 8 2 8 6\"/><path d=\"M20 26h8\"/></svg>", "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 16h30l-2 28H11z\"/><path d=\"M16 16c0-10 16-10 16 0\"/></svg>"];
+  $('#tiles').innerHTML=names.map((c,i)=>`<button class="tile rv" data-c="${esc(c)}"><span>${IC[i%IC.length]}</span><b>${esc(c)}</b><small>${fa(P.filter(p=>p.category===c).length)} مدل</small></button>`).join('');
   $$('.tile').forEach(t=>t.onclick=()=>{$('#cat').value=t.dataset.c;render();$('#products').scrollIntoView({behavior:'smooth'})});
   render();
+  if(location.hash.startsWith('#p=')){const c=decodeURIComponent(location.hash.slice(3));const p=P.find(x=>x.code===c);if(p)openP(p.id);}
   const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('on')),{threshold:.12});
   $$('.rv:not(.on)').forEach(el=>io.observe(el));
 })();
@@ -479,7 +517,7 @@ let P=[],S={};
 if(!sb){ $('#login').innerHTML='<p>ابتدا فایل config.js را با اطلاعات Supabase پر کن.</p>'; }
 const SF=[['brand','نام برند','i'],['tagline','شعار','i'],['hero_title','تیتر اصلی (بعد از لوگو)','i'],['hero_sub','زیرتیتر','i'],['hero_caps','متن‌های حین اسکرول (هر خط یک متن)','t'],
 ['marquee','نوار متحرک زیر ویدیو (هر خط یک کلمه)','t'],['cats','دسته‌بندی‌های پیش‌فرض (هر خط یکی)','t'],['process','مراحل تولید (هر خط: عنوان|توضیح)','t'],['cta_title','تیتر بنر سفارش عمده','i'],['cta_text','متن بنر سفارش عمده','t'],['faq','سوالات متداول (هر خط: سوال|جواب)','t'],['about_title','عنوان درباره ما','i'],['about_text','متن درباره ما','t'],['features','ویژگی‌ها (هر خط یکی)','t'],['phones','شماره تلفن‌ها (هر خط یکی)','t'],['address','آدرس','i'],
-['map_lat','عرض جغرافیایی نقشه','i'],['map_lng','طول جغرافیایی نقشه','i'],['accent_light','رنگ طلایی حالت روز','c'],['accent_dark','رنگ طلایی حالت شب','c']];
+['map_lat','عرض جغرافیایی نقشه','i'],['map_lng','طول جغرافیایی نقشه','i'],['credit_name','نام سازنده (پایین سایت)','i'],['credit_url','لینک سازنده','i'],['accent_light','رنگ طلایی حالت روز','c'],['accent_dark','رنگ طلایی حالت شب','c']];
 async function session(){ const {data}=await sb.auth.getSession(); const on=!!data.session; $('#login').style.display=on?'none':'block'; $('#app').style.display=on?'block':'none'; if(on) init(); }
 $('#lg').onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$('#em').value,password:$('#pw').value}); if(error)$('#le').textContent='ایمیل یا رمز اشتباه است'; else session();};
 $('#out').onclick=async()=>{await sb.auth.signOut();location.reload()};
