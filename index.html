@@ -25,7 +25,9 @@ window.__frames=portrait&&!ios&&typeof createImageBitmap==='function';
 window.__fallback=function(){return 'mobile-lite.mp4'};
 window.__lite=!ios&&((n.deviceMemory&&n.deviceMemory<=4)||(n.hardwareConcurrency&&n.hardwareConcurrency<=4)||/[?&]lite=1/.test(location.search));
 if(window.__lite)document.documentElement.classList.add('lite');
-if(location.hash!=='#admin'){window.__vp=fetch(window.__frames?'mobile-frames.bin':window.__pv()).catch(function(){return null})}})()</script>
+var known=/^(|admin|terms|products|process|about|faq|contact|cats|top|blog|p=.*)$/i.test(location.hash.slice(1));
+window.__gate=known?Promise.resolve(true):new Promise(function(r){window.__gateRes=r;setTimeout(function(){r(true)},6000)});
+if(location.hash!=='#admin'&&known){window.__vp=fetch(window.__frames?'mobile-frames.bin':window.__pv()).catch(function(){return null})}})()</script>
 <link rel="preconnect" href="https://ywploikvwzgcwwxdmrwt.supabase.co" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -522,6 +524,35 @@ html.lite:not(.app){scroll-behavior:auto}
 /* ===== v16: frame-sequence canvas (Android) ===== */
 .stick canvas.vc{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
+/* ===== v17: hidden links page ===== */
+.lnk{position:fixed;inset:0;z-index:1200;overflow-y:auto;display:none;color:#f3f4f6;background:radial-gradient(70% 42% at 85% 10%,rgba(58,92,190,.42),transparent),radial-gradient(60% 38% at 8% 0%,rgba(217,182,111,.13),transparent),linear-gradient(180deg,#0f1c3d,#080d1a 58%,#05070f)}
+.lnk.on{display:block;animation:f .4s}
+.lw{max-width:520px;margin:auto;padding:calc(44px + env(safe-area-inset-top,0px)) 20px calc(50px + env(safe-area-inset-bottom,0px));text-align:center}
+.llogo{width:136px;height:136px;margin:6px auto 24px;border-radius:50%;padding:7px;border:2px solid rgba(217,182,111,.65);box-shadow:0 0 70px -8px rgba(217,182,111,.45);background:radial-gradient(circle,rgba(217,182,111,.14),transparent 70%)}
+.llogo img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.lw h1{font-size:40px;font-weight:900;line-height:1.4}
+.lsub{margin:12px 0 30px;color:#9aa6c0;font-size:16px;line-height:2.1}
+.llist{display:grid;gap:16px}
+.lk{display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:32px;color:#f3f4f6;border:1px solid rgba(255,255,255,.13);background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02)),linear-gradient(135deg,color-mix(in srgb,var(--c) 22%,#15204a),#0f1838);box-shadow:0 14px 30px -18px #000;opacity:0;transform:translateY(16px);animation:lkin .6s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*70ms + 150ms);transition:transform .25s,border-color .25s}
+.lk:active{transform:scale(.98)}.lk:hover{border-color:rgba(217,182,111,.55)}
+@keyframes lkin{to{opacity:1;transform:none}}
+.lk b{flex:1;text-align:right;font-size:21px;font-weight:800}
+.li{width:62px;height:62px;border-radius:20px;display:grid;place-items:center;flex:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 20px -10px rgba(0,0,0,.6)}
+.li svg{width:32px;height:32px}
+.li-instagram{background:linear-gradient(135deg,#feda75,#fa7e1e 25%,#d62976 55%,#962fbf 80%,#4f5bd5)}
+.li-telegram{background:linear-gradient(135deg,#5ec4fa,#1d9bf0)}
+.li-whatsapp{background:linear-gradient(135deg,#5eeb8a,#1fc65a)}
+.li-eitaa{background:linear-gradient(135deg,#f9a03a,#e0690a)}
+.li-bale{background:linear-gradient(135deg,#34d1a0,#14996f)}
+.li-rubika{background:linear-gradient(135deg,#ff4d8d,#7b2ff7)}
+.li-phone{background:linear-gradient(135deg,#efd9a2,#b98d45)}
+.li-email{background:linear-gradient(135deg,#6b8fc7,#3a5a92)}
+.li-website{background:linear-gradient(135deg,#3cc4b4,#1f8a7f)}
+.li-location{background:linear-gradient(135deg,#f06a7a,#c32f45)}
+.lc{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;flex:none;color:#f0d79a;border:1px solid rgba(217,182,111,.35);background:rgba(255,255,255,.05)}
+.lc .ic{width:20px;height:20px}
+.lfoot{margin-top:34px;color:#6f7b96;font-size:14px}
+
 body{padding-bottom:60px}.top{position:sticky;top:0;z-index:30;background:var(--glass);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:10px;height:64px}.top h1{font-size:18px;margin-left:auto}
 .tabs{display:flex;gap:8px;margin:22px 0;flex-wrap:wrap}.tabs button{padding:10px 20px;border-radius:999px;background:var(--card);color:var(--text);border:1px solid var(--line);font-weight:700}.tabs button.on{background:var(--gold);color:#0D1528;border-color:var(--gold)}
@@ -647,6 +678,7 @@ textarea{min-height:110px;resize:vertical}
 <nav class="tabbar" id="tbar"><a href="#top" data-k="home"><i data-i="home"></i><span>خانه</span></a><a href="#products" data-k="prod"><i data-i="grid"></i><span>محصولات</span></a><a class="tcall" id="tcall" aria-label="تماس"><i data-i="phone"></i></a><button id="tfav" data-k="fav"><i data-i="heart"></i><span>علاقه‌مندی</span></button><a href="#contact" data-k="cont"><i data-i="pin"></i><span>آدرس</span></a></nav>
 <div class="ov" id="pov"><div class="ppage" id="pm"></div></div>
 <div class="ov" id="tov"><div class="ppage" id="tm"></div></div>
+<div class="lnk" id="lnk"></div>
 <div class="lb" id="lb"></div><div class="tst" id="tst"></div>
 <div class="ov" id="cov"><div class="sheet" id="cs"></div></div>
 
@@ -659,7 +691,7 @@ textarea{min-height:110px;resize:vertical}
 <div id="app" style="display:none">
 <div class="top"><div class="wrap"><h1 class="gold">پنل مدیریت سورنا بگ</h1><a class="sm" href="index.html" target="_blank">مشاهده سایت</a><button class="icon-btn theme-btn"></button><button class="sm red" id="out">خروج</button></div></div>
 <div class="wrap">
- <div class="tabs"><button data-t="prod" class="on">محصولات</button><button data-t="bulk">قیمت و تخفیف گروهی</button><button data-t="pub">انتشار روی سایت</button><button data-t="art">مقالات (سئو)</button><button data-t="mus">موسیقی</button><button data-t="set">تنظیمات سایت</button></div>
+ <div class="tabs"><button data-t="prod" class="on">محصولات</button><button data-t="bulk">قیمت و تخفیف گروهی</button><button data-t="pub">انتشار روی سایت</button><button data-t="lnk">راه‌های ارتباطی (QR)</button><button data-t="art">مقالات (سئو)</button><button data-t="mus">موسیقی</button><button data-t="set">تنظیمات سایت</button></div>
 
  <div id="t-prod">
   <div class="stats" id="st"></div>
@@ -688,6 +720,17 @@ textarea{min-height:110px;resize:vertical}
     <li>در Repository access گزینه‌ی Only select repositories را بزن و همین مخزن سایت را انتخاب کن.</li>
     <li>در Permissions، بخش Repository permissions، گزینه‌ی <b>Contents</b> را روی <b>Read and write</b> بگذار.</li>
     <li>توکن ساخته‌شده را همین‌جا بالا پیست کن. توکن فقط روی همین دستگاه ذخیره می‌شه.</li></ol></div>
+ </div>
+
+ <div id="t-lnk" style="display:none">
+  <div class="box"><h3>صفحه‌ی مخفی راه‌های ارتباطی (برای QR)</h3>
+   <p style="color:var(--mute);line-height:2;margin:8px 0 14px">این صفحه در سایت هیچ‌جا دیده نمی‌شه و هیچ لینکی به اون نیست. فقط وقتی کسی آدرس زیر رو باز کنه (مثلاً با اسکن QR)، نشون داده می‌شه. همین آدرس رو توی هر برنامه‌ی ساخت QR بزن.</p>
+   <div class="f"><div class="w"><label>کلمه‌ی انتهای آدرس (بعد از #). فقط حروف انگلیسی کوچک، عدد و خط تیره. بهتره حدس‌زدنی نباشه.</label><input id="lh" dir="ltr"></div>
+    <div class="w"><label>آدرس کامل (برای QR)</label><input id="lurl" dir="ltr" readonly></div>
+    <div><label>عنوان صفحه</label><input id="lti"></div><div><label>متن پایین صفحه</label><input id="lfo"></div>
+    <div class="w"><label>توضیح زیر عنوان</label><textarea id="lsu" style="min-height:76px"></textarea></div></div></div>
+  <div class="box"><h3>گزینه‌ها</h3><div id="lrows" style="margin-top:12px"></div><button class="btn btn-line" id="ladd" style="margin-top:12px">+ افزودن گزینه</button></div>
+  <button class="btn btn-gold" id="lsave" style="width:100%">ذخیره</button>
  </div>
 
  <div id="t-art" style="display:none">
@@ -740,6 +783,11 @@ const DEFAULTS = {
   map_lat: '35.72000153555729',
   map_lng: '50.81608191519174',
   terms: "## ۱. کلیات\nاستفاده از این وب‌سایت و ثبت سفارش از «سورنا بگ» به معنی مطالعه و پذیرش قوانین و مقررات زیر است. لطفاً پیش از خرید این متن را بخوانید.\n\n## ۲. ثبت سفارش\nسفارش‌ها از طریق تماس تلفنی یا پیام‌رسان‌ها با شماره‌های درج‌شده در سایت ثبت می‌شود. هنگام سفارش، کد محصول، رنگ، تعداد و نشانی تحویل را دقیق اعلام کنید. سفارش پس از تایید موجودی و هماهنگی نهایی با تولیدی قطعی می‌شود.\n\n## ۳. قیمت‌ها و تخفیف‌ها\nقیمت‌ها به تومان است و ممکن است بدون اطلاع قبلی تغییر کند. قیمت ملاک عمل، قیمتی است که هنگام ثبت و تایید سفارش اعلام می‌شود. تخفیف‌ها محدود به زمان و موجودی هر محصول است.\n\n## ۴. پرداخت\nروش و مراحل پرداخت هنگام ثبت سفارش و با هماهنگی تلفنی مشخص می‌شود. در این وب‌سایت هیچ پرداخت اینترنتی انجام نمی‌شود و اطلاعات کارت بانکی شما از طریق سایت دریافت یا ذخیره نمی‌گردد.\n\n## ۵. ارسال و تحویل\nارسال به سراسر کشور انجام می‌شود. زمان و هزینه‌ی ارسال بسته به مقصد و نوع سفارش هنگام ثبت سفارش اعلام می‌شود. هنگام تحویل، بسته را بررسی کنید و در صورت آسیب‌دیدگی ظاهری، موضوع را همان لحظه به ما اطلاع دهید.\n\n## ۶. تعویض و مرجوعی\nدر صورت وجود ایراد ساخت (مانند ایراد دوخت یا زیپ) یا ارسال اشتباه، ظرف ۷ روز پس از تحویل با ما تماس بگیرید تا محصول تعویض یا مرجوع شود. شرط پذیرش مرجوعی، سالم بودن محصول، عدم استفاده و همراه بودن بسته‌بندی است. خرابی ناشی از استفاده نادرست، شست‌وشوی نامناسب یا آسیب عمدی شامل مرجوعی نمی‌شود.\n\n## ۷. سفارش عمده و سفارشی\nسفارش‌های عمده و سفارش‌های ساخته‌شده با لوگو، رنگ یا مدل دلخواه مشتری شرایط جداگانه دارند. مشخصات، قیمت و زمان تحویل پیش از شروع تولید توافق می‌شود و پس از شروع تولید، لغو یا مرجوعی این سفارش‌ها (به‌جز ایراد ساخت) امکان‌پذیر نیست.\n\n## ۸. تفاوت رنگ و تصویر\nتلاش می‌کنیم تصاویر محصولات دقیق باشند، اما به‌دلیل تفاوت نمایشگرها و نور محیط ممکن است رنگ واقعی محصول اندکی با تصویر متفاوت باشد. ابعاد ذکرشده نیز ممکن است در حد استاندارد تولید اندکی تفاوت داشته باشد.\n\n## ۹. حریم خصوصی\nاین سایت اطلاعات شخصی بازدیدکنندگان را دریافت نمی‌کند. فهرست علاقه‌مندی‌ها و تنظیم موسیقی فقط روی دستگاه خود شما ذخیره می‌شود. شماره‌ی شما فقط زمانی نزد ما ثبت می‌شود که خودتان تماس بگیرید یا پیام بدهید و صرفاً برای پیگیری سفارش استفاده می‌شود و در اختیار شخص ثالث قرار نمی‌گیرد.\n\n## ۱۰. مالکیت معنوی\nنام، لوگو، تصاویر، متن‌ها و طراحی این سایت متعلق به «سورنا بگ» است و کپی یا استفاده‌ی تجاری از آن‌ها بدون اجازه‌ی کتبی مجاز نیست.\n\n## ۱۱. تغییر قوانین\nسورنا بگ می‌تواند این قوانین را در هر زمان به‌روزرسانی کند و نسخه‌ی منتشرشده در همین صفحه، نسخه‌ی معتبر است. در موارد اختلاف، مطابق قوانین جمهوری اسلامی ایران رفتار می‌شود.\n\n## ۱۲. ارتباط با ما\nبرای هر سوال، پیشنهاد یا شکایت با شماره‌های تماس درج‌شده در سایت در ارتباط باشید.",
+  links_hash: 'links',
+  links_title: 'سورنا بگ',
+  links_sub: 'راه ارتباطی مورد نظرتان را انتخاب کنید\nپیام شما مستقیم به ما می‌رسد',
+  links_foot: 'برای شروع گفتگو یکی از گزینه‌ها را لمس کنید',
+  links_json: "[{\"type\": \"instagram\", \"title\": \"اینستاگرام\", \"value\": \"\", \"on\": false}, {\"type\": \"telegram\", \"title\": \"تلگرام\", \"value\": \"\", \"on\": false}, {\"type\": \"whatsapp\", \"title\": \"واتساپ\", \"value\": \"09123675474\", \"on\": true}, {\"type\": \"eitaa\", \"title\": \"ایتا\", \"value\": \"\", \"on\": false}, {\"type\": \"bale\", \"title\": \"بله\", \"value\": \"\", \"on\": false}, {\"type\": \"phone\", \"title\": \"تماس تلفنی\", \"value\": \"09123675474\", \"on\": true}]",
   statement: 'ما فقط *کیف* نمی‌دوزیم؛ *همراهِ* روزهای شما را می‌سازیم. هر دوخت، یک *تعهد* به کیفیت است.',
   ship_text: 'برای خرید یا هماهنگی سفارش با شماره‌های سایت تماس بگیرید و کد محصول را اعلام کنید. ارسال به سراسر کشور انجام می‌شود. سفارش عمده و سفارش با لوگو و رنگ دلخواه هم امکان‌پذیر است.',
   accent_light: '#C6A15B',
@@ -835,6 +883,7 @@ async function loadVid(u){let r=window.__vp?await window.__vp:null;if(!r||!r.ok)
 (async()=>{
   const v=$('#vid'), hero=$('.hero');
   let caps=[]; window.setCaps=c=>caps=c;
+  if(!(await window.__gate)) return;
   v.poster=(innerHeight>innerWidth)?POSTER_M:POSTER_D;
   const vu=window.__pv();
   let FM=null; const ready0=[];
@@ -888,6 +937,31 @@ async function loadVid(u){let r=window.__vp?await window.__vp:null;if(!r||!r.ok)
 })();
 /* ---------- render ---------- */
 const fmt=t=>String(t||'').split(/\n{2,}/).map(b=>b.trim()).filter(Boolean).map(b=>/^##\s+/.test(b)?`<h3>${esc(b.replace(/^##\s+/,''))}</h3>`:`<p>${esc(b).replace(/\n/g,'<br>')}</p>`).join('');
+const LKT={instagram:['اینستاگرام','#d62976'],telegram:['تلگرام','#1d9bf0'],whatsapp:['واتساپ','#1fc65a'],eitaa:['ایتا','#e9760f'],bale:['بله','#14996f'],rubika:['روبیکا','#7b2ff7'],phone:['تماس تلفنی','#b98d45'],email:['ایمیل','#4a6fa5'],website:['وب‌سایت','#2a9d8f'],location:['موقعیت مکانی','#d6384b']};
+const W='#fff',LKI={
+ instagram:'<svg viewBox="0 0 24 24"><rect x="3.6" y="3.6" width="16.8" height="16.8" rx="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3.9" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.1" cy="6.9" r="1.2" fill="#fff"/></svg>',
+ telegram:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M21.5 4 2.8 11.2c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.7c.2.6.4.8.8.8s.6-.2.9-.5l2.5-2.4 4.9 3.6c.9.5 1.5.2 1.7-.8L22.9 5.4c.3-1.2-.4-1.7-1.4-1.4z"/><path d="M9 14l9.500-7.500-7.300 8.700-.4 3.900z" fill="rgba(0,0,0,.18)"/></svg>',
+ whatsapp:'<svg viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" d="M12 3.200a8.800 8.800 0 0 0-7.500 13.400L3.200 20.800l4.300-1.200A8.800 8.800 0 1 0 12 3.200z"/><path fill="#fff" d="M9 7.900c-.3.500-.8 1.200-.2 2.500.9 1.900 2.400 3.400 4.400 4.300 1.100.5 1.700.2 2.100-.3.3-.4.5-.8.3-1l-1.700-.9c-.3-.2-.6 0-.8.2l-.4.5c-1-.4-2.100-1.400-2.500-2.400l.4-.5c.2-.2.3-.5.1-.8L10 7.700c-.2-.3-.7-.1-1 .2z"/></svg>',
+ eitaa:'<svg viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round" d="M7.500 13.200c0-3 2.300-5.400 5.200-5.400 2.100 0 3.700 1.200 3.700 3 0 1.900-1.900 3-4 3H8.800c1.400 2.400 4.100 3.300 7.300 2.300M13.500 10.800h6"/></svg>',
+ bale:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.500" fill="#fff"/><path d="M8 12.300l2.900 2.900 5.400-5.800" fill="none" stroke="#17a673" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ rubika:'<svg viewBox="0 0 24 24"><path d="M8 6h5a3.500 3.500 0 0 1 0 7H8zM8 13l7 6" fill="none" stroke="#fff" stroke-width="2.300" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ phone:'<svg viewBox="0 0 24 24" fill="none" stroke="#1c2848" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>',
+ email:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.500" y="5.500" width="17" height="13" rx="2.500"/><path d="M4 7.500l8 6 8-6"/></svg>',
+ website:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.500"/><path d="M3.500 12h17M12 3.500c2.500 2.500 3.500 5.300 3.500 8.500S14.500 18 12 20.500C9.500 18 8.500 15.200 8.500 12S9.500 6 12 3.500z"/></svg>',
+ location:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.500 7-11a7 7 0 1 0-14 0c0 5.500 7 11 7 11z"/><circle cx="12" cy="10" r="2.500"/></svg>'};
+function lkHref(t,v){v=String(v||'').trim();if(!v)return '';if(/^(https?:|tel:|mailto:|sms:)/i.test(v))return v;if(/^[a-z][a-z0-9+.-]*:/i.test(v))return '';
+  const u=v.replace(/^@/,'').replace(/\s/g,'');
+  switch(t){case 'instagram':return 'https://instagram.com/'+u;case 'telegram':return 'https://t.me/'+u;case 'whatsapp':{const n=u.replace(/[^\d+]/g,'').replace(/^\+/,'');return n?'https://wa.me/'+(n.startsWith('0')?'98'+n.slice(1):n):''}
+   case 'eitaa':return 'https://eitaa.com/'+u;case 'bale':return 'https://ble.ir/'+u;case 'rubika':return 'https://rubika.ir/'+u;case 'phone':return 'tel:'+u.replace(/[^\d+]/g,'');case 'email':return 'mailto:'+u;case 'website':return 'https://'+u.replace(/^\/+/,'')}
+  return ''}
+const isLinks=()=>location.hash.slice(1).toLowerCase()===String(S.links_hash||'links').toLowerCase();
+function showLinks(){let L=[];try{L=JSON.parse(S.links_json||'[]')}catch(e){}
+  const items=L.filter(x=>x&&x.on!==false&&lkHref(x.type,x.value)).map((x,i)=>{const t=LKT[x.type]||LKT.website,h=lkHref(x.type,x.value),ext=/^https?:/i.test(h);
+    return `<a class="lk" style="--i:${i};--c:${t[1]}" href="${esc(h)}"${ext?' target="_blank" rel="noopener noreferrer"':''}><span class="li li-${esc(LKT[x.type]?x.type:'website')}">${LKI[x.type]||LKI.website}</span><b>${esc(x.title||t[0])}</b><span class="lc">${ico('arrow')}</span></a>`}).join('');
+  $('#lnk').innerHTML=`<div class="lw"><div class="llogo"><img src="${LOGO}" alt=""></div><h1 class="gold">${esc(S.links_title)}</h1><p class="lsub">${esc(S.links_sub).replace(/\n/g,'<br>')}</p><div class="llist">${items||'<p class="lsub">هنوز گزینه‌ای اضافه نشده.</p>'}</div><p class="lfoot">${esc(S.links_foot)}</p></div>`;
+  $('#lnk').classList.add('on');lockScroll(true);$('#pre').classList.add('off');document.title=(S.links_title||'')+' | راه‌های ارتباطی'}
+function hideLinks(){$('#lnk').classList.remove('on');lockScroll(false)}
+addEventListener('hashchange',()=>{if(isLinks())showLinks();else if($('#lnk').classList.contains('on'))hideLinks()});
 function openTerms(){ $('#tm').innerHTML=`<div class="pbar"><button class="pback" id="tx">${ico('arrow')} بازگشت</button><div class="crumb">قوانین و مقررات</div></div><div class="tw"><div class="eyebrow">TERMS</div><h1>قوانین و <span class="gold">مقررات</span></h1>${fmt(S.terms)}</div>`;
   $('#tov').classList.add('on');lockScroll(true);$('#tm').scrollTop=0;$('#tx').onclick=closeTerms}
 function closeTerms(){$('#tov').classList.remove('on');lockScroll(false);if(location.hash==='#terms')history.replaceState(null,'',location.pathname+location.search)}
@@ -999,6 +1073,7 @@ $('#q').oninput=render; $('#cat').onchange=render; $('#so').onchange=render;
 (async()=>{
   const pp=CFG.SUPABASE_URL?loadProducts():null, ap=CFG.SUPABASE_URL?loadArticles():null;
   S=await loadSettings(); applyAccent(S);
+  const lkOn=isLinks(); if(window.__gateRes)window.__gateRes(!lkOn); if(lkOn)showLinks();
   $('#brand').textContent=S.brand; $('#fb').textContent=S.brand; $('#yr').textContent=new Date().toLocaleDateString('fa-IR',{year:'numeric'});
   $('#ht').textContent=S.hero_title; $('#hs').textContent=S.hero_sub; setCaps(lines(S.hero_caps));
   $('#at').textContent=S.about_title; $('#ax').textContent=S.about_text;
@@ -1043,7 +1118,7 @@ $('#q').oninput=render; $('#cat').onchange=render; $('#so').onchange=render;
   if(S.seo_keywords){const m=document.querySelector('meta[name=keywords]');m&&m.setAttribute('content',S.seo_keywords)}
   try{ if(P.length&&CFG.SUPABASE_URL){ const ld={'@context':'https://schema.org','@type':'ItemList',itemListElement:P.slice(0,50).map((p,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'Product',name:p.name,sku:p.code,category:p.category||undefined,description:(p.description||'').slice(0,300)||undefined,image:imgs(p)[0]?new URL(imgClean(imgs(p)[0]),location.href).href:undefined,brand:{'@type':'Brand',name:'Sorena Bag'},offers:{'@type':'Offer',priceCurrency:'IRR',price:String(finalPrice(p)*10),availability:'https://schema.org/InStock',url:location.origin+location.pathname+'#p='+encodeURIComponent(p.code)}}}))};const sc=document.createElement('script');sc.type='application/ld+json';sc.textContent=JSON.stringify(ld);document.head.appendChild(sc)} }catch(e){}
   try{const A=ap?await ap:[];if(A.length){$('#blog').style.display='';$('#arts').innerHTML=A.map(a=>`<details class="qa"><summary>${esc(a.title)}</summary><div class="abody">${fmt(a.body)}</div></details>`).join('')}}catch(e){}
-  initMusic();
+  if(!lkOn)initMusic();
 })();
 
 /* ===== luxury effects ===== */
@@ -1113,8 +1188,8 @@ async function session(){ const {data}=await sb.auth.getSession(); const on=!!da
 $('#lg').onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$('#em').value,password:$('#pw').value}); if(error)$('#le').textContent='ایمیل یا رمز اشتباه است'; else session();};
 $('#out').onclick=async()=>{await sb.auth.signOut();location.reload()};
 if(sb) session();
-$$('.tabs button').forEach(b=>b.onclick=()=>{$$('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');['prod','bulk','pub','art','mus','set'].forEach(t=>$('#t-'+t).style.display=t===b.dataset.t?'block':'none')});
-async function init(){ S=await loadSettings(); drawSettings(); await load(); await loadArts(); drawMusic(); loadGh(); }
+$$('.tabs button').forEach(b=>b.onclick=()=>{$$('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');['prod','bulk','pub','lnk','art','mus','set'].forEach(t=>$('#t-'+t).style.display=t===b.dataset.t?'block':'none')});
+async function init(){ S=await loadSettings(); drawSettings(); await load(); await loadArts(); drawMusic(); loadGh(); drawLinks(); }
 async function load(){ const {data,error}=await sb.from('products').select('*').order('sort').order('created_at',{ascending:false}); if(error)toast('خطا: '+error.message); P=data||[]; draw(); }
 function draw(){
   $('#st').innerHTML=[['کل محصولات',P.length],['فعال',P.filter(p=>p.active).length],['مخفی',P.filter(p=>!p.active).length],['تخفیف‌دار',P.filter(p=>p.discount>0).length]].map(([l,v])=>`<div><b>${fa(v)}</b>${l}</div>`).join('');
@@ -1234,6 +1309,28 @@ async function publish(){
  }catch(e){setPub('خطا: '+(e&&e.message?e.message:e))}
  pubBusy=false;
 }
+/* hidden links page */
+const LKTY={instagram:'اینستاگرام',telegram:'تلگرام',whatsapp:'واتساپ',eitaa:'ایتا',bale:'بله',rubika:'روبیکا',phone:'تماس تلفنی',email:'ایمیل',website:'وب‌سایت',location:'موقعیت مکانی'};
+let LKR=[];
+function lkUrl(){return location.origin+location.pathname.replace(/[^/]*$/,'')+'#'+($('#lh').value.trim().replace(/^#/,'').toLowerCase()||'links')}
+function drawLinks(){try{LKR=JSON.parse(S.links_json||'[]')}catch(e){LKR=[]}
+ $('#lh').value=S.links_hash||'links';$('#lti').value=S.links_title||'';$('#lfo').value=S.links_foot||'';$('#lsu').value=S.links_sub||'';$('#lurl').value=lkUrl();rowsLinks()}
+function rowsLinks(){$('#lrows').innerHTML=LKR.map((r,i)=>`<div class="row" style="flex-wrap:wrap" data-i="${i}">
+  <label style="display:flex;gap:6px;align-items:center;font-size:13px"><input type="checkbox" data-k="on" style="width:auto" ${r.on!==false?'checked':''}> فعال</label>
+  <select data-k="type" style="width:auto;flex:1;min-width:120px">${Object.keys(LKTY).map(k=>`<option value="${k}" ${r.type===k?'selected':''}>${LKTY[k]}</option>`).join('')}</select>
+  <input data-k="title" value="${esc(r.title||'')}" placeholder="عنوان روی دکمه" style="flex:1;min-width:130px">
+  <input data-k="value" dir="ltr" value="${esc(r.value||'')}" placeholder="یوزرنیم، شماره یا لینک" style="flex:1 1 100%">
+  <button class="sm" data-a="up">▲</button><button class="sm" data-a="dn">▼</button><button class="sm red" data-a="del">حذف</button></div>`).join('')||'<div style="color:var(--mute)">گزینه‌ای نیست.</div>'}
+$('#lrows').addEventListener('input',e=>{const r=e.target.closest('[data-i]');if(!r)return;const o=LKR[+r.dataset.i],k=e.target.dataset.k;if(!k)return;o[k]=k==='on'?e.target.checked:e.target.value});
+$('#lrows').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const i=+b.closest('[data-i]').dataset.i,a=b.dataset.a;
+ if(a==='del'){if(!confirm('این گزینه حذف شود؟'))return;LKR.splice(i,1)}else if(a==='up'&&i>0){[LKR[i-1],LKR[i]]=[LKR[i],LKR[i-1]]}else if(a==='dn'&&i<LKR.length-1){[LKR[i+1],LKR[i]]=[LKR[i],LKR[i+1]]}rowsLinks()});
+$('#ladd').onclick=()=>{LKR.push({type:'instagram',title:'',value:'',on:true});rowsLinks()};
+$('#lh').oninput=()=>{$('#lurl').value=lkUrl()};
+$('#lsave').onclick=async()=>{const h=$('#lh').value.trim().replace(/^#/,'').toLowerCase();
+ if(!/^[a-z0-9_-]{3,40}$/.test(h))return toast('کلمه‌ی آدرس باید ۳ تا ۴۰ حرف انگلیسی کوچک، عدد یا خط تیره باشد');
+ if(['admin','terms','products','process','about','faq','contact','cats','top','blog'].includes(h))return toast('این کلمه برای سایت رزرو شده، یکی دیگر بنویس');
+ const rows=[{key:'links_hash',value:h},{key:'links_title',value:$('#lti').value.trim()},{key:'links_foot',value:$('#lfo').value.trim()},{key:'links_sub',value:$('#lsu').value.trim()},{key:'links_json',value:JSON.stringify(LKR)}];
+ const {error}=await sb.from('settings').upsert(rows);if(error)return toast('خطا: '+error.message);rows.forEach(r=>{S[r.key]=r.value});$('#lurl').value=lkUrl();toast('ذخیره شد ✓');autoPub()};
 /* settings */
 function drawSettings(){ $('#sf').innerHTML=SF.map(([k,l,t])=>`<div class="${t==='t'?'w':''}"><label>${l}</label>${t==='t'?`<textarea data-k="${k}">${esc(S[k])}</textarea>`:`<input data-k="${k}" ${t==='c'?'type="color"':''} value="${esc(S[k])}">`}</div>`).join(''); }
 $('#ss').onclick=async()=>{ const rows=$$('[data-k]').map(e=>({key:e.dataset.k,value:e.value})); const {error}=await sb.from('settings').upsert(rows); toast(error?'خطا: '+error.message:'تنظیمات ذخیره شد ✓');if(!error)autoPub(); };
